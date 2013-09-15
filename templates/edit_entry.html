@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Report for {{ date }}{% endblock %}
+{% block body %}
+  <form method="POST">
+
+    <p>
+      <label for="memo">Memo</label>
+      <textarea id="memo" name="memo" rows="10" style="width:600px; height=200px;">{{ entry.memo|escape }}</textarea>
+    </p>
+
+    <input type="submit" value="Submit" />
+  </form>
+{% endblock %}

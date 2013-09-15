@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Daily Reports{% endblock %}
+{% block body %}
+  <table border="1">
+    <tr>
+      <th>Date</th>
+      <th>Last Updated</th>
+      <th>Entry</th>
+    </tr>
+    {% for day in days %}
+      <tr>
+        <td><a href="/e/{{ day }}/">{{ day }}</a></td>
+        {% if reports[day] is defined %}
+          <td>{{ reports[day].updated.strftime('%Y-%m-%d %H:%M') }}</td>
+          <td>{{ reports[day].memo|truncate(20, True) }}</td>
+        {% else %}
+          <td></td>
+          <td></td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

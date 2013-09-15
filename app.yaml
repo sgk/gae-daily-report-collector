@@ -1,0 +1,22 @@
+application: axpve1
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: "latest"
+- name: markupsafe
+  version: "latest"
+
+handlers:
+- url: /static/(.*)
+  static_files: static/\1
+  upload: static/(.*)
+
+- url: /_ah/login_required
+  script: main.app
+
+- url: .*
+  script: main.app
